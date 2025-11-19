@@ -3,6 +3,7 @@ import "dotenv/config"
 import cors from "cors"
 import { dbConnect } from "./config/db.js"
 import cookieParser from "cookie-parser"
+import userRoute from "./routes/userRoute.js"
 
 const app = express()
 const port = process.env.PORT || 8084
@@ -19,6 +20,8 @@ app.use(cookieParser())
 app.get("/", (req, res)=>{
     return res.send("Hello this is running")
 })
+
+app.use("/api/user", userRoute)
 
 app.listen(port, ()=>{
     console.log(`server is running ${port}`);
