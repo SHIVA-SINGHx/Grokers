@@ -13,7 +13,6 @@ export const isSellerAuthenticate = async (req, res, next)=>{
         }
 
         let decoded = jwt.verify(token, process.env.SECRET_KEY);
-        // asign the id to user
         if(decoded.email === process.env.SELLER_EMAIL){
             next()
         }
