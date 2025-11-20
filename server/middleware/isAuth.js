@@ -13,6 +13,7 @@ export const isAuthenticate = async (req, res, next)=>{
         }
 
         let decoded = jwt.verify(token, process.env.SECRET_KEY);
+        // asign the id to user
         req.user = decoded.id;
         next()
         
