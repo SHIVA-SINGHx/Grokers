@@ -4,6 +4,7 @@ import cors from "cors"
 import { dbConnect } from "./config/db.js"
 import cookieParser from "cookie-parser"
 import userRoute from "./routes/userRoute.js"
+import sellerRoute from "./routes/sellerRoute.js"
 
 const app = express()
 const port = process.env.PORT || 8084
@@ -22,7 +23,7 @@ app.get("/", (req, res)=>{
 })
 
 app.use("/api/user", userRoute);
-
+app.use("/api/seller", sellerRoute)
 
 app.listen(port, ()=>{
     console.log(`server is running ${port}`);

@@ -22,7 +22,7 @@ export const sellerLogin = async (req, res)=>{
             
                 res.status(200).json({
                   success: true,
-                  message: "Seller Logged in successfully",
+                  message: "Login successfully",
                   user: {
                     name: user.name,
                     email: user.email,
