@@ -5,10 +5,13 @@ import { dbConnect } from "./config/db.js"
 import cookieParser from "cookie-parser"
 import userRoute from "./routes/userRoute.js"
 import sellerRoute from "./routes/sellerRoute.js"
+import { connectCloudinary } from "./config/cloudnary.js"
 
 const app = express()
 const port = process.env.PORT || 8084
 
+dbConnect()
+connectCloudinary()
 // Middleware
 
 const allowOrigins = ["http://localhost:5002"]
@@ -25,8 +28,8 @@ app.get("/", (req, res)=>{
 app.use("/api/user", userRoute);
 app.use("/api/seller", sellerRoute);
 
+
 app.listen(port, ()=>{
     console.log(`server is running ${port}`);
-    dbConnect()
     
 })
