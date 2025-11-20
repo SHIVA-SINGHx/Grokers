@@ -136,7 +136,7 @@ export const logout = async (req, res)=>{
 
 export const isUserLogin = async(req, res)=>{
   try {
-    const {userId} = req.user;
+    const {userId} = req.user
     if(!userId){
       return res.status(401).json({
         success: false,
@@ -147,7 +147,6 @@ export const isUserLogin = async(req, res)=>{
     const user = await User.findById(userId).select("-password");
     res.json({success: true, user})
 
-    
   } catch (error) {
     return res.status(500).json({
       success: false,
