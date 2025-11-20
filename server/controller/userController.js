@@ -134,6 +134,7 @@ export const logout = async (req, res)=>{
     }
 }
 
+// Check the user stauts is this login or not
 export const isUserLogin = async(req, res)=>{
   try {
     const {userId} = req.user

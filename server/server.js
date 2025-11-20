@@ -21,7 +21,8 @@ app.get("/", (req, res)=>{
     return res.send("Hello this is running")
 })
 
-app.use("/api/user", userRoute)
+app.use("/api/user", userRoute);
+
 
 app.listen(port, ()=>{
     console.log(`server is running ${port}`);
