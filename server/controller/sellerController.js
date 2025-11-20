@@ -7,8 +7,9 @@ export const sellerLogin = async (req, res)=>{
         if(!email || !password){
             return res.status(400).json({success: false, message: "All fields are required"})
         }
+
         if(email === process.env.SELLER_EMAIL && password === process.env.SELLER_PASSWORD){
-                const token = jwt.sign({ email}, process.env.SECRET_KEY, {
+                const token = jwt.sign({ email }, process.env.SECRET_KEY, {
                   expiresIn: "7d",
                 });
             
@@ -23,6 +24,7 @@ export const sellerLogin = async (req, res)=>{
                 res.status(200).json({
                   success: true,
                   message: "Login successfully",
+                  email: email,
                   token,
                 });
         }
@@ -37,25 +39,24 @@ export const sellerLogin = async (req, res)=>{
 }
 
 //sellerLogout
-export const sellerLogout = async (req, res)=>{
-    try {
-        res.clearCookie({
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: process.env.NODE_ENV === "production" ? "none" : "Strict",
-        })
+export const sellerLogout = async (req, res) => {
+  try {
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "Strict",
+    });
 
-        return res.status(200).json({
-            success: true,
-            message: "Seller logout Successfully"
-        })
-        
-    } catch (error) {
-        console.log("Server error", error);
-        
-        return res.status(500).json({
-            success: false,
-            message: "Internal server error"
-        })
-    }
-}
+    return res.status(200).json({
+      success: true,
+      message: "Seller logout successfully",
+    });
+
+  } catch (error) {
+    console.log("Server error", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};

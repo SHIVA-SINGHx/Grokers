@@ -23,7 +23,7 @@ app.get("/", (req, res)=>{
 })
 
 app.use("/api/user", userRoute);
-app.use("/api/seller", sellerRoute)
+app.use("/api/seller", sellerRoute);
 
 app.listen(port, ()=>{
     console.log(`server is running ${port}`);
