@@ -6,7 +6,7 @@ const orderSchema = new moongoose.Schema({
         ref: "User",
         required: true
     },
-    itemes: [
+    items: [
         {
             productId:{
                 type: moongoose.Schema.Types.ObjectId,
