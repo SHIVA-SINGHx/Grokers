@@ -72,3 +72,28 @@ export const getProductById = async (req, res)=>{
         })
     }
 }
+
+// changestock of product
+export const changeStock = async (req, res)=>{
+    try {
+        const {id, inStock} = req.body;
+        const product = await Product.findByIdAndUpdate(id, {inStock}, {new: true});
+        if(!product){
+            return res.status(404).json({
+                success: false,
+                message: "Product not found"
+            })
+        }
+        res.status(200).json({
+            success: true,
+            message: "Product stock updated successfully",
+            product
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error"
+        })   
+    }
+}
