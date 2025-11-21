@@ -1,7 +1,7 @@
 import { v2 as cloudinary } from "cloudinary";
 import { Product } from "../model/productModel";
 
-
+// add product
 export const addProduct = async (req, res) =>{
     try {
         const {name, description, category, price, offerPrice} = req.body;
@@ -22,6 +22,28 @@ export const addProduct = async (req, res) =>{
             price,
             offerPrice,
             productImg: imageUrl
+        })
+        
+        return res.status(200).json({
+            success: true,
+            message: "Product added successfully"
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error"
+        })
+    }
+}
+
+// get all prodcuts
+export const getAllProducts = async (req, res)=>{
+    try {
+        const prodcuts = await Product.find({}).sort({createdAt: -1 });
+        return res.status(200).json({
+            success: true,
+            prodcuts
         })
         
     } catch (error) {
