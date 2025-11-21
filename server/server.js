@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser"
 import userRoute from "./routes/userRoute.js"
 import sellerRoute from "./routes/sellerRoute.js"
 import { connectCloudinary } from "./config/cloudnary.js"
+import productRoute from "./routes/productRoute.js"
 
 const app = express()
 const port = process.env.PORT || 8084
@@ -27,6 +28,7 @@ app.get("/", (req, res)=>{
 
 app.use("/api/user", userRoute);
 app.use("/api/seller", sellerRoute);
+app.use("api/product", productRoute);
 
 
 app.listen(port, ()=>{
