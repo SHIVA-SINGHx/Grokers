@@ -1,13 +1,21 @@
 import React from 'react'
 import {RouterProvider, createBrowserRouter} from "react-router-dom"
 import Home from './pages/Home'
-import Footer from './components/Footer'
-import Navbar from './components/Navbar'
+import ProductCart from './components/ProductCart'
+import ProductDetails from './pages/ProductDetails'
 
 const router = createBrowserRouter([
   {
-    path: "/home",
-    element: <> <Home/> <Footer/> </> 
+    path: "/",
+    element: <Home/>
+  },
+  {
+    path: "/products",
+    element: <ProductCart/>
+  },
+  {
+    path: "/product/:id",
+    element: <ProductDetails/>
   },
 ])
 
