@@ -2,6 +2,7 @@ import { Order } from "../model/orderModel.js";
 import { Product } from "../model/productModel.js";
 import { User } from "../model/userModel.js";
 
+// Place Order COD
 export const placeOrderCOD = async(req, res)=>{
     try {
         const {userId} = req.user;
@@ -36,6 +37,30 @@ export const placeOrderCOD = async(req, res)=>{
         return res.status(500).json({
             success: false,
             message: error.message
+        })
+    }
+}
+
+// order details for individual user
+export const getUsersOrder = async (req, res)=>{
+    try {
+        const userId = req.user;
+        const orders = await Order.find({
+            userId,
+            $or: [{paymentType: "COD"}, {isPaid: true}],
+        })
+        .populate("items.product address")
+        .sort({createdAt: -1});
+        res.status(200).json({
+            success: true,
+            message: "User orders fetched successfully",
+            orders
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            success :false,
+            message: "Internal server error"
         })
     }
 }
