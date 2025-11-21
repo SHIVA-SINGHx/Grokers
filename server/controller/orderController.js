@@ -64,3 +64,26 @@ export const getUsersOrder = async (req, res)=>{
         })
     }
 }
+
+// get all orders for admin
+export const getAllOrders = async(req, res)=>{
+    try {
+        const orders = await Order.find({
+            userId,
+            $or: [{paymentType: "COD"}, {isPaid: true}],         
+        })
+        .populate("items.product address")
+        .sort({createdAt: -1});
+        res.status(200).json({
+            success :true,
+            message: "All orders fetched successfully",
+            orders
+        })
+        
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Internal server error"
+        })
+    }
+}
