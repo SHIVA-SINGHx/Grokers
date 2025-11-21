@@ -8,6 +8,7 @@ import sellerRoute from "./routes/sellerRoute.js"
 import { connectCloudinary } from "./config/cloudnary.js"
 import productRoute from "./routes/productRoute.js"
 import cartRoute from "./routes/cartRoute.js"
+import orderRoute from "./routes/orderRoute.js"
 
 const app = express()
 const port = process.env.PORT || 8084
@@ -31,6 +32,7 @@ app.use("/api/user", userRoute);
 app.use("/api/seller", sellerRoute);
 app.use("api/product", productRoute);
 app.use("api/cart", cartRoute);
+app.use("/api/order", orderRoute);
 
 
 app.listen(port, ()=>{
