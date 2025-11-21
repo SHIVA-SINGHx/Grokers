@@ -18,7 +18,7 @@ dbConnect()
 connectCloudinary()
 // Middleware
 
-const allowOrigins = ["http://localhost:5002"]
+const allowOrigins = ["http://localhost:5173/"]
 
 app.use(cors({origin: allowOrigins, credentials: true}))
 app.use(express.json())

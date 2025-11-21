@@ -1,10 +1,21 @@
 import React from 'react'
+import {RouterProvider, createBrowserRouter} from "react-router-dom"
+import Home from './pages/Home'
+import Footer from './components/Footer'
+import Navbar from './components/Navbar'
+
+const router = createBrowserRouter([
+  {
+    path: "/home",
+    element: <> <Home/> <Footer/> </> 
+  },
+])
 
 const App = () => {
   return (
-    <div className='bg-red-400 h-screen'>
-      Hello this is Grokers client
-    </div>
+    <>
+    <RouterProvider router={router}/>
+    </>
   )
 }
 
