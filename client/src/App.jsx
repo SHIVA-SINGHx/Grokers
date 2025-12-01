@@ -1,34 +1,18 @@
-import React from 'react'
-import {RouterProvider, createBrowserRouter} from "react-router-dom"
-import Home from './pages/Home'
-import ProductCart from './components/ProductCart'
-import ProductDetails from './pages/ProductDetails'
-import Cart from './pages/Cart'
+import React, { useContext } from 'react'
+import { AppContext } from './context/AppContext'
+import Navbar from './components/Navbar'
+import { useLocation } from 'react-router-dom';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home/>
-  },
-  {
-    path: "/products",
-    element: <ProductCart/>
-  },
-  {
-    path: "/product/:id",
-    element: <ProductDetails/>
-  },
-  {
-    path: "/cart",
-    element: <Cart/>
-  }
-])
 
 const App = () => {
+  const {isSeller} = useContext(AppContext);
+  const isSellerPath = useLocation().pathname.includes("seller");
+
+  
   return (
-    <>
-    <RouterProvider router={router}/>
-    </>
+    <div>
+      {isSellerPath ? null : <Navbar/>}
+    </div>
   )
 }
 
