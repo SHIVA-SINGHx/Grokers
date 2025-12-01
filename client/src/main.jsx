@@ -8,21 +8,29 @@ import Home from "./pages/Home";
 import ProductCart from "./components/ProductCart";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
-import Navbar from "./components/Navbar.jsx";
+import About from "./pages/About.jsx";
 
+// Root layout: App acts as the layout and will render an <Outlet /> for child routes.
 const router = createBrowserRouter([
-  { path: "/", element: <><Navbar/> <Home /> </> },
-  { path: "/products", element: <><Navbar/> <ProductCart /> </> },
-  { path: "/product/:id", element: <ProductDetails /> },
-  { path: "/cart", element: <Cart /> },
+  {
+    path: "/",
+    element: (
+      <AppContextProvider>
+        <App />
+      </AppContextProvider>
+    ),
+    children: [
+      { index: true, element: <Home /> },
+      { path: "products", element: <ProductCart /> },
+      { path: "product/:id", element: <ProductDetails /> },
+      { path: "cart", element: <Cart /> },
+      { path: "about", element: <About /> },
+    ],
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}>
-      <AppContextProvider>
-        <App />
-      </AppContextProvider>
-    </RouterProvider>
+    <RouterProvider router={router} />
   </StrictMode>
 );
