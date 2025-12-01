@@ -8,10 +8,11 @@ import Home from "./pages/Home";
 import ProductCart from "./components/ProductCart";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
+import Navbar from "./components/Navbar.jsx";
 
 const router = createBrowserRouter([
-  { path: "/", element: <Home /> },
-  { path: "/products", element: <ProductCart /> },
+  { path: "/", element: <><Navbar/> <Home /> </> },
+  { path: "/products", element: <><Navbar/> <ProductCart /> </> },
   { path: "/product/:id", element: <ProductDetails /> },
   { path: "/cart", element: <Cart /> },
 ]);
