@@ -1,6 +1,7 @@
 import Banner from "../components/Banner";
 import BestSeller from "../components/BestSeller";
 import Category from "../components/Category";
+import NewsLetter from "../components/NewsLetter";
 import ProductCard from "../components/ProductCart";
 
 const Home = () => {
@@ -9,7 +10,8 @@ const Home = () => {
       <Banner/>
       <Category/>
       <BestSeller/>
-      {/* <ProductCard/> */}
+      <NewsLetter/>
+      
     </div>
   );
 };
