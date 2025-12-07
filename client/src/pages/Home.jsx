@@ -1,11 +1,12 @@
-import React from 'react'
+import Banner from "../components/Banner";
+import ProductCard from "../components/ProductCart";
 
 const Home = () => {
   return (
-    <div>
-      Hello this is home
+    <div className="mt-10">
+      <Banner/>
+      <ProductCard/>
     </div>
-  )
-}
-
-export default Home
+  );
+};
+export default Home;
