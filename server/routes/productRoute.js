@@ -4,7 +4,6 @@ import { upload } from "../config/multer.js";
 import { isSellerAuthenticate } from "../middleware/authSeller.js";
 
 
-
 const router = express.Router();
 
 router.post("/add-product", upload.array("images"), isSellerAuthenticate , addProduct)

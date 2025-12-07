@@ -8,4 +8,4 @@ router.post("/login", sellerLogin)
 router.get("/logout", isSellerAuthenticate , sellerLogout)
 router.get("/is-auth", isSellerAuthenticate, isSellerLogin)
 
-export default router 
+export default router

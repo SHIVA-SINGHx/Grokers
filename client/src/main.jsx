@@ -10,7 +10,6 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import About from "./pages/About.jsx";
 
-// Root layout: App acts as the layout and will render an <Outlet /> for child routes.
 const router = createBrowserRouter([
   {
     path: "/",
