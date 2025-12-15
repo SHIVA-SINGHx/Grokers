@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../components/ProductCart.jsx";
 import { useAppContext } from "../context/AppContext.jsx";
 
 const Products = () => {
