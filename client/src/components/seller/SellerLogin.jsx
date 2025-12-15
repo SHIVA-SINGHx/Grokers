@@ -1,6 +1,8 @@
 import toast from "react-hot-toast";
 import { useAppContext } from "../../context/AppContext";
 import React, { useState, useEffect } from "react";
+
+
 const SellerLogin = () => {
   const { isSeller, setIsSeller, navigate, axios } = useAppContext();
   const [email, setEmail] = useState("");
@@ -13,7 +15,7 @@ const SellerLogin = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const { data } = await axios.post("/api/seller/login", {
+      const { data } = await axios.post("http://localhost:8000/api/seller/login", {
         email,
         password,
       });
