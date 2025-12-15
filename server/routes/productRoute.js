@@ -6,9 +6,9 @@ import { isSellerAuthenticate } from "../middleware/authSeller.js";
 
 const router = express.Router();
 
-router.post("/add-product", isSellerAuthenticate, upload.array("image"), addProduct)
+router.post("/add-product", isSellerAuthenticate, upload.array("images"), addProduct)
 router.get("/get-products", getAllProducts)
-router.get("/id", getProductById)
+router.get("/:id", getProductById)
 router.get("/stock", isSellerAuthenticate, changeStock)
 
 

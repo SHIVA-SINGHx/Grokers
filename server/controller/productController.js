@@ -8,7 +8,7 @@ export const addProduct = async (req, res) =>{
         const images = req.files;
         const imageUrl = await Promise.all(
             images.map(async (item)=>{
-                const result = await cloudinary.uploader(item.path, {
+                const result = await cloudinary.uploader.upload(item.path, {
                     resource_type: "image",
                 })
                 return result.secure_url;
@@ -30,6 +30,8 @@ export const addProduct = async (req, res) =>{
         })
         
     } catch (error) {
+        console.log(error);
+        
         return res.status(500).json({
             success: false,
             message: "Internal server error"
