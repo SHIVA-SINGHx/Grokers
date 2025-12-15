@@ -5,6 +5,7 @@ import { useAppContext } from "../context/AppContext.jsx";
 const Products = () => {
   const { products, searchQuery } = useAppContext();
   const [filteredProducts, setFilteredProducts] = useState([]);
+  
   useEffect(() => {
     if (searchQuery.length > 0) {
       setFilteredProducts(

@@ -18,9 +18,9 @@ dbConnect()
 connectCloudinary()
 // Middleware
 
-const allowOrigins = ["http://localhost:5173/"]
+const allowOrigins = ["http://localhost:5173"]
 
-app.use(cors({origin: allowOrigins, credentials: true}))
+app.use(cors({ origin: allowOrigins, credentials: true }))
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
@@ -31,10 +31,10 @@ app.get("/", (req, res)=>{
 
 app.use("/api/user", userRoute);
 app.use("/api/seller", sellerRoute);
-app.use("api/product", productRoute);
-app.use("api/cart", cartRoute);
+app.use("/api/product", productRoute);
+app.use("/api/cart", cartRoute);
 app.use("/api/order", orderRoute);
-app.use("api/address", addressRoute);
+app.use("/api/address", addressRoute);
 
 
 app.listen(port, ()=>{
