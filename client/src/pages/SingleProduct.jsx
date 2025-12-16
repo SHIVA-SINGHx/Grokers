@@ -3,13 +3,18 @@ import { useAppContext } from "../context/AppContext.jsx";
 import { Link, useParams } from "react-router-dom";
 import { assets } from "../assets/assets";
 import ProductCard from "../components/ProductCart.jsx";
+
+
 const SingleProduct = () => {
+
   const { products, navigate, addToCart } = useAppContext();
   const { id } = useParams();
   const [thumbnail, setThumbnail] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const product = products.find((product) => product._id === id);
+
   console.log("product", product);
+  
   useEffect(() => {
     if (products.length > 0) {
       let productsCopy = products.slice();
