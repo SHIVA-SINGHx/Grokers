@@ -23,7 +23,6 @@ export const addProduct = async (req, res) =>{
             offerPrice,
             productImg: imageUrl
         })
-        
         return res.status(200).json({
             success: true,
             message: "Product added successfully"
